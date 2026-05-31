@@ -9,4 +9,5 @@ dist/
 *.tsbuildinfo
 bun.lock
 apps/api/.data/
-
+out/
+.firebase/

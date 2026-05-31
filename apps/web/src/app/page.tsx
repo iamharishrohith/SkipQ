@@ -229,11 +229,19 @@ export default function HomePage() {
     const [addLang, setAddLang] = useState('English');
     const [addPriority, setAddPriority] = useState('Standard');
 
+    const getApiBaseUrl = () => {
+        if (typeof window === 'undefined') return 'http://localhost:3001';
+        if (process.env.NEXT_PUBLIC_API_URL) {
+            return process.env.NEXT_PUBLIC_API_URL;
+        }
+        const apiHost = window.location.hostname;
+        return `http://${apiHost}:3001`;
+    };
+
     // Initial state fetch from Elysia API
     const fetchServerState = async () => {
         try {
-            const apiHost = window.location.hostname;
-            const res = await fetch(`http://${apiHost}:3001/api/queue/state-details/srv-test-1`);
+            const res = await fetch(`${getApiBaseUrl()}/api/queue/state-details/srv-test-1`);
             const data = await res.json();
             if (data.success && data.data) {
                 setQueue(data.data.queue);
@@ -266,7 +274,10 @@ export default function HomePage() {
 
         // Establish WS connection
         const apiHost = window.location.hostname;
-        const wsUrl = `ws://${apiHost}:3001/ws/queue?serviceId=srv-test-1`;
+        let wsUrl = `ws://${apiHost}:3001/ws/queue?serviceId=srv-test-1`;
+        if (process.env.NEXT_PUBLIC_API_URL) {
+            wsUrl = process.env.NEXT_PUBLIC_API_URL.replace(/^http/, 'ws') + '/ws/queue?serviceId=srv-test-1';
+        }
         console.log(`Connecting to WebSocket: ${wsUrl}`);
         
         const ws = new WebSocket(wsUrl);
@@ -311,8 +322,7 @@ export default function HomePage() {
     const handleCallNext = async () => {
         if (syncWithServer) {
             try {
-                const apiHost = window.location.hostname;
-                const res = await fetch(`http://${apiHost}:3001/api/queue/next`, {
+                const res = await fetch(`${getApiBaseUrl()}/api/queue/next`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ serviceId: 'srv-test-1', operatorName: 'OPD Counter Desk 4' })
@@ -354,13 +364,12 @@ export default function HomePage() {
 
         if (syncWithServer) {
             try {
-                const apiHost = window.location.hostname;
                 const tokenId = (servingItem as any).id;
                 if (!tokenId) {
                     triggerToast('Simulated token ID missing.');
                     return;
                 }
-                const res = await fetch(`http://${apiHost}:3001/api/queue/no-show`, {
+                const res = await fetch(`${getApiBaseUrl()}/api/queue/no-show`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ tokenId })
@@ -403,8 +412,7 @@ export default function HomePage() {
 
         if (syncWithServer) {
             try {
-                const apiHost = window.location.hostname;
-                const res = await fetch(`http://${apiHost}:3001/api/queue/complete`, {
+                const res = await fetch(`${getApiBaseUrl()}/api/queue/complete`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ serviceId: 'srv-test-1' })
@@ -446,11 +454,10 @@ export default function HomePage() {
 
         if (syncWithServer) {
             try {
-                const apiHost = window.location.hostname;
                 const phone = '98765' + Math.floor(10000 + Math.random() * 90000);
                 const isFastPass = addPriority === 'VIP FastPass';
                 
-                const res = await fetch(`http://${apiHost}:3001/api/queue/book`, {
+                const res = await fetch(`${getApiBaseUrl()}/api/queue/book`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -584,8 +591,7 @@ export default function HomePage() {
         setSubmitting(true);
 
         try {
-            const apiHost = window.location.hostname;
-            const res = await fetch(`http://${apiHost}:3001/api/billing/buy-package`, {
+            const res = await fetch(`${getApiBaseUrl()}/api/billing/buy-package`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

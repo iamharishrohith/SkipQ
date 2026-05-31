@@ -1,0 +1,34 @@
+{
+  "hosting": {
+    "public": "apps/web/out",
+    "ignore": [
+      "firebase-app.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "rewrites": [
+      {
+        "source": "/desk/**",
+        "destination": "/desk/placeholder.html"
+      },
+      {
+        "source": "/feedback/**",
+        "destination": "/feedback/placeholder.html"
+      },
+      {
+        "source": "/join/**",
+        "destination": "/join/placeholder.html"
+      },
+      {
+        "source": "/q/**",
+        "destination": "/q/placeholder.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

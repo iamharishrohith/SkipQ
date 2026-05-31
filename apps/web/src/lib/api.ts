@@ -5,12 +5,16 @@
 // but on port 3001.
 
 function getApiUrl(): string {
-    // Server-side rendering — use env var or default
-    if (typeof window === 'undefined') {
-        return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    // Prioritize configured API URL env (build-time production injection)
+    if (process.env.NEXT_PUBLIC_API_URL) {
+        return process.env.NEXT_PUBLIC_API_URL;
     }
 
-    // Client-side — derive from current page URL so it works on any LAN IP
+    if (typeof window === 'undefined') {
+        return 'http://localhost:3001';
+    }
+
+    // Client-side local development / LAN fallback
     const { hostname } = window.location;
     return `http://${hostname}:3001`;
 }
