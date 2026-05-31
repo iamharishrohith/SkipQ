@@ -1,0 +1,21 @@
+{
+  "name": "skipq-v2",
+  "private": true,
+  "packageManager": "bun@1.2.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "db:generate": "cd apps/api && bun run db:generate",
+    "db:migrate": "cd apps/api && bun run db:migrate",
+    "db:seed": "cd apps/api && bun run db:seed"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0"
+  }
+}

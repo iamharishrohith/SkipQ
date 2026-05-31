@@ -1,0 +1,378 @@
+/* ==========================================================================
+   SkipQ v2 — Premium Immersive Deep Space Theme & Ultra-High-Fidelity UI
+   ========================================================================== */
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-16) var(--space-6) var(--space-12) var(--space-6);
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 25%, rgba(124, 58, 237, 0.16), rgba(59, 130, 246, 0.03), #040409 60%);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    height: 1200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(100px);
+}
+
+/* Futuristic grid overlay */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center;
+    pointer-events: none;
+    opacity: 0.9;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 75%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.6rem;
+    background: rgba(124, 58, 237, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: var(--radius-full);
+    font-size: var(--fs-xs);
+    color: #c084fc;
+    margin-bottom: var(--space-8);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+}
+
+.hero-title {
+    font-size: clamp(3.25rem, 7vw, 5.25rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1.02;
+    margin-bottom: var(--space-8);
+    color: #ffffff;
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+}
+
+.hero-title .gradient-text {
+    background: linear-gradient(135deg, #a78bfa 0%, #c084fc 40%, #f472b6 80%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    max-width: 760px;
+    margin: 0 auto var(--space-12) auto;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-16);
+    position: relative;
+    z-index: 10;
+}
+
+/* Simulated dynamic telemetry stats */
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: var(--space-12);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hero-stat-item {
+    padding: var(--space-6) var(--space-4);
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-stat-item:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(139, 92, 246, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.06);
+}
+
+.hero-stat-value {
+    font-size: var(--fs-3xl);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    display: block;
+}
+
+.hero-stat-label {
+    font-size: var(--fs-xs);
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 8px;
+    font-weight: 800;
+}
+
+/* Immersive Bento Grid Feature Section */
+.features-section {
+    padding: var(--space-20) var(--space-6);
+    background: #040409;
+    position: relative;
+}
+
+.features-section::before {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    right: 5%;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(192, 132, 252, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+    filter: blur(80px);
+}
+
+.section-tag {
+    display: inline-flex;
+    background: rgba(192, 132, 252, 0.06);
+    color: #c084fc;
+    border: 1px solid rgba(192, 132, 252, 0.25);
+    padding: 0.45rem 1.25rem;
+    font-size: var(--fs-xs);
+    font-weight: 800;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.section-title {
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-4);
+}
+
+.section-desc {
+    color: #64748b;
+    font-size: var(--fs-lg);
+    max-width: 680px;
+    margin: 0 auto var(--space-16) auto;
+    line-height: 1.6;
+}
+
+/* Solid Symmetric Bento Grid (No height clashes, uniform margins/gaps) */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 320px; /* Uniform height baseline prevents visual clashes */
+    gap: 2rem; /* Clean grid gap replaces direct item margins */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bento-item {
+    background: rgba(15, 15, 27, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.04);
+}
+
+.bento-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.05), transparent 50%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.bento-item:hover {
+    transform: translateY(-6px);
+    border-color: rgba(139, 92, 246, 0.25);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 58, 237, 0.08);
+}
+
+.bento-item:hover::before {
+    background: radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.1), transparent 50%);
+    opacity: 1;
+}
+
+.bento-icon {
+    font-size: 2.25rem;
+    color: #a78bfa;
+    margin-bottom: var(--space-4);
+    filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.35));
+    display: flex;
+    align-items: center;
+}
+
+.bento-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #f472b6;
+    background: rgba(244, 114, 182, 0.08);
+    border: 1px solid rgba(244, 114, 182, 0.2);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(8px);
+}
+
+.bento-title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+}
+
+.bento-desc {
+    color: #94a3b8;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+/* Bento size configurations */
+.bento-colspan-2 {
+    grid-column: span 2;
+}
+
+.bento-rowspan-2 {
+    grid-row: span 2;
+}
+
+/* High Fidelity Glass Pricing Plan Cards */
+.pricing-card {
+    background: rgba(15, 15, 27, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 3.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 580px;
+    backdrop-filter: blur(25px);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.04);
+}
+
+.pricing-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+}
+
+.pricing-featured {
+    border: 2px solid #7c3aed;
+    box-shadow: 0 25px 50px rgba(124, 58, 237, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.pricing-featured:hover {
+    border-color: #a78bfa;
+    box-shadow: 0 35px 70px rgba(124, 58, 237, 0.3);
+}
+
+.plan-price-large {
+    font-size: 3.25rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.04em;
+    text-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+/* Form Onboarding step labels */
+.step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 900;
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
+}
+
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 280px;
+    }
+    .bento-colspan-2 {
+        grid-column: span 1;
+    }
+    .bento-rowspan-2 {
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto; /* Let content set size on small layouts */
+        gap: 1.5rem;
+    }
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+}

@@ -1,0 +1,27 @@
+# ========================================
+# SkipQ v2 Elysia API — Fly.io Configuration
+# ========================================
+
+app = "skipq-ai-api"
+primary_region = "bom" # Mumbai region for fast Indian subcontinent latency
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "3001"
+  NODE_ENV = "production"
+  DATA_DIR = "/data"
+  FRONTEND_URL = "https://skipq-ai.web.app" # Firebase Hosting URL
+
+[http_service]
+  internal_port = 3001
+  force_https = true
+  auto_stop_machines = "suspend" # Save resources, suspends when idle
+  auto_start_machines = true
+  min_machines_running = 1 # Keep 1 running 24/7/365 within Free Tier limits
+
+# --- Free Persistent Storage Mount (1GB Disk) ---
+[mounts]
+  source = "skipq_data"
+  destination = "/data"

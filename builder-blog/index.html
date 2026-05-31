@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SkipQ - Google AI Assisted Queue Companion & Indian SaaS Roadmap</title>
+    <meta name="description" content="SkipQ is a Google AI-assisted queue companion designed to solve crowding and digital inclusion across hospitals, banks, and universities in India.">
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- FontAwesome & Custom Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Ambient Blur Gradients for White Theme Depth -->
+    <div class="ambient-glows">
+        <div class="glow-1"></div>
+        <div class="glow-2"></div>
+        <div class="glow-3"></div>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <div class="header-container">
+        <header class="nav">
+            <a href="#top" class="brand" aria-label="SkipQ home">
+                <span class="brand-mark">SQ</span>
+                <span class="brand-text">
+                    <strong>SkipQ</strong>
+                    <small>Enterprise AI Waitlist</small>
+                </span>
+            </a>
+            
+            <nav class="nav-links" aria-label="Page navigation">
+                <a href="#problem" class="active">Indian Queue Crisis</a>
+                <a href="#solution">SaaS Vision</a>
+                <a href="#ai-playground">Gemini Playground</a>
+                <a href="#live-simulator">Live Simulator</a>
+                <a href="#roi-calculator">ROI Calculator</a>
+                <a href="#architecture">Technical Build</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn btn-secondary btn-icon" data-copy-link title="Copy Launch Link" aria-label="Copy page link">
+                    <i class="fas fa-link" aria-hidden="true"></i>
+                </button>
+                <a href="#live-simulator" class="btn btn-primary">
+                    <i class="fas fa-play" aria-hidden="true"></i>
+                    Launch Simulator
+                </a>
+            </div>
+        </header>
+    </div>
+
+    <main class="page" id="top">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="badge">
+                    <span class="pulse-live" aria-hidden="true"></span>
+                    Google Cloud AI Triage — Reimagining Waiting Rooms
+                </div>
+                <h1>
+                    SkipQ: Google AI Assisted Queue Companion for <span class="gradient-text">India's Crowded Services</span>
+                </h1>
+                <p class="hero-lead">
+                    Built by <strong>Harish Rohith S</strong>, SkipQ is a high-fidelity SaaS waitlist platform that replaces stressful physical lines in hospitals, college offices, and banks with real-time digital tokens, smart triage, and <strong>Gemini-powered dynamic local guidance</strong>.
+                </p>
+                <div class="hero-actions">
+                    <a href="#live-simulator" class="btn btn-primary btn-lg">
+                        <i class="fas fa-mobile-screen" aria-hidden="true"></i>
+                        Launch Interactive Simulator
+                    </a>
+                    <a href="#ai-playground" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
+                        Explore Google AI Studio Mock
+                    </a>
+                </div>
+                <div class="hero-meta" aria-label="Product summary">
+                    <div class="meta-item">
+                        <span>Impact Area</span>
+                        <strong>India / APAC Regions</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Primary Tools</span>
+                        <strong>Gemini Pro & Vertex AI</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Key SaaS Model</span>
+                        <strong>Multitenant B2B / WhatsApp</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Interactive Showcase -->
+            <aside class="showcase-card" aria-label="Project overview">
+                <div class="showcase-header">
+                    <span class="showcase-title">
+                        <i class="fas fa-sparkles"></i> The SkipQ Innovation
+                    </span>
+                    <span class="showcase-badge">SaaS Concept</span>
+                </div>
+                <h2>Solving Wait Stress at Scale</h2>
+                <ul class="showcase-features">
+                    <li>
+                        <div class="feature-icon-wrapper"><i class="fas fa-qrcode"></i></div>
+                        <div class="showcase-text">
+                            <h4>Zero-Install QR Entry</h4>
+                            <p>No app stores required. Scan, enter phone number, and instantly join the queue in a mobile web browser.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon-wrapper"><i class="fas fa-comment-sms"></i></div>
+                        <div class="showcase-text">
+                            <h4>Offline Sync & WhatsApp Push</h4>
+                            <p>Full integration with WhatsApp API. Dynamic queue position updates sent directly, preserving internet bandwidth.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon-wrapper"><i class="fas fa-language"></i></div>
+                        <div class="showcase-text">
+                            <h4>Gemini Multilingual Triage</h4>
+                            <p>Gemini auto-translates ticket instructions and desk requirements into Indian regional languages (Hindi, Tamil, Marathi).</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon-wrapper"><i class="fas fa-chart-line"></i></div>
+                        <div class="showcase-text">
+                            <h4>Vertex AI Predictive Analytics</h4>
+                            <p>SaaS branch dashboards predict peak arrival hours and suggest real-time staff desk allocations.</p>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+        </section>
+
+        <!-- Dynamic Impact Strip -->
+        <section class="impact-strip" aria-label="Key system statistics">
+            <div class="impact-item">
+                <strong>100% Mobile</strong>
+                <span>Zero-Install Triage</span>
+                <p>Fully browser and WhatsApp-driven</p>
+            </div>
+            <div class="impact-item">
+                <strong>Gemini Pro</strong>
+                <span>Contextual Guidance</span>
+                <p>Translates metrics into human action</p>
+            </div>
+            <div class="impact-item">
+                <strong>Redis / BullMQ</strong>
+                <span>FIFO Queue Engine</span>
+                <p>No-show benches & automated timeouts</p>
+            </div>
+            <div class="impact-item">
+                <strong>Google Cloud</strong>
+                <span>Serverless Scale</span>
+                <p>Cloud Run and Firebase-powered</p>
+            </div>
+        </section>
+
+        <!-- Section 1: The India Queue Crisis -->
+        <section class="section problem-grid" id="problem">
+            <div class="problem-text">
+                <span class="section-kicker">The Local Problem</span>
+                <h2 class="section-title">Where waiting is not just a line—it's lost livelihood.</h2>
+                <p>
+                    Across India, queuing is one of the most persistent public pain points. In large government hospitals (like AIIMS), registrar offices, regional public banks (like SBI), and college administrative counters, thousands of citizens crowd waiting rooms every morning. 
+                </p>
+                <p>
+                    These places are characterized by shouting operators, confusing paper registers, and massive anxiety. Citizens must stand in physical queues for hours simply because the system cannot explain itself. The uncertainty is draining—people have no idea when their number will be called, if they can step away for a glass of water, or what specific documents they must prepare.
+                </p>
+                <p>
+                    For low-wage workers, a hospital or bank visit represents a lost day of wages. For senior citizens or patients, it is physically demanding. For administrative staff, dealing with frustrated, crowded rooms leads to operational bottlenecks and error-prone triage.
+                </p>
+            </div>
+            <aside class="quote-card">
+                <i class="fas fa-quote-left quote-icon" aria-hidden="true"></i>
+                <div class="quote-content">
+                    <p>
+                        "In Indian outpatient departments, people queue from 5:00 AM. 40% of the friction is not because of slow doctors, but because patients do not understand where to go next, what files are missing, or when their turn actually is."
+                    </p>
+                    <span class="quote-author">Dr. Harish Rohith, SaaS Founder</span>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Section 2: Rebuilding as a Real SaaS Solution -->
+        <section class="section" id="solution">
+            <span class="section-kicker">The SaaS Vision</span>
+            <h2 class="section-title">Our Innovation: SkipQ as a Multitenant SaaS Enterprise</h2>
+            <p class="section-lead">
+                SkipQ goes beyond simple queue numbering. By combining high-speed caching engines with Google's advanced Generative AI, we've designed a robust B2B SaaS platform specifically optimized for the complex demographics of Asia Pacific.
+            </p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-share-nodes" aria-hidden="true"></i>
+                    <h3>Multitenant Admin Console</h3>
+                    <p>Hospitals, banks, and universities sign up and spin up custom branches, specific desks, and multiple service queues in under five minutes.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-address-card" aria-hidden="true"></i>
+                    <h3>Smart Triage & Aadhaar Flow</h3>
+                    <p>Customers join securely using phone numbers or quick ID sweeps. SkipQ checks requirements and routes users to the correct desk instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hands-holding-child" aria-hidden="true"></i>
+                    <h3>Inclusive WhatsApp Sync</h3>
+                    <p>Low-literacy and low-connectivity citizens receive standard WhatsApp cards. Gemini status logs are pushed directly as messages, bypassing heavy web interfaces.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-language" aria-hidden="true"></i>
+                    <h3>Regional Language Engine</h3>
+                    <p>Gemini translates complex counter instructions into 12+ major Indian languages, assuring accessibility for every non-English-speaking visitor.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bolt" aria-hidden="true"></i>
+                    <h3>High-Performance FIFO</h3>
+                    <p>Engineered using Bun, Elysia, and Redis. Manages high-concurrency ticket checkouts, automated customer no-show benches, and active buffers.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    <h3>AI-Guided Queue Triage</h3>
+                    <p>Gemini contextually assesses queue variables (e.g., waiting size, staff load, student scholarship deadline) to deliver tailored customer action plans.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Interactive Gemini Playground -->
+        <section class="section" id="ai-playground">
+            <span class="section-kicker">Innovation Showcase</span>
+            <h2 class="section-title">Google AI Studio Prompt Playground</h2>
+            <p class="section-lead">
+                Experience how SkipQ leverages Gemini to turn numbers into human guidance. Select a scenario preset below, inspect the <strong>System Instructions</strong> and <strong>Queue JSON Metrics</strong>, and hit **Run Prompt** to see Gemini generate real-time instructions in English and regional Indian languages.
+            </p>
+
+            <!-- Google AI Studio Playground Widget -->
+            <div class="playground-wrapper">
+                <div class="playground-header">
+                    <div class="playground-logo">
+                        <span class="studio-badge">Google</span>
+                        <strong>AI Studio Sandbox</strong>
+                    </div>
+                    <div class="playground-presets">
+                        <span>Preset:</span>
+                        <select class="preset-select" id="playground-preset-select" aria-label="Select AI Studio Preset">
+                            <option value="aiims">AIIMS Hospital OPD Clinic (New Delhi)</option>
+                            <option value="iit">IIT Registrar Certificate Desk (Mumbai)</option>
+                            <option value="sbi">SBI Counter 3 Accounts Branch (Lucknow)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="playground-body">
+                    <!-- Left Sidebar (Settings) -->
+                    <aside class="playground-sidebar">
+                        <span class="sidebar-title">Model Configuration</span>
+                        
+                        <div class="control-group">
+                            <label for="model-select">Model</label>
+                            <select id="model-select" disabled>
+                                <option>gemini-2.5-flash (APAC Edition)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="slider-header">
+                                <label for="temp-slider">Temperature</label>
+                                <span class="slider-val" id="temp-val">0.40</span>
+                            </div>
+                            <input type="range" id="temp-slider" min="0" max="1" step="0.05" value="0.40" aria-label="Temperature slider">
+                        </div>
+
+                        <div class="sys-inst-box">
+                            <label for="sys-inst">System Instructions</label>
+                            <textarea id="sys-inst" class="sys-inst-textarea" placeholder="Enter model system prompts..."></textarea>
+                        </div>
+                    </aside>
+
+                    <!-- Right Workspace -->
+                    <div class="playground-workspace">
+                        <div class="playground-editor-area">
+                            <!-- Input Prompt JSON Section -->
+                            <div class="prompt-block">
+                                <span class="prompt-block-label">
+                                    <i class="fas fa-code"></i> Input JSON Queue State (Elysia API variables)
+                                </span>
+                                <div class="prompt-input-mock" id="prompt-json-view">Loading variables...</div>
+                            </div>
+
+                            <!-- Gemini Output Stream Section -->
+                            <div class="prompt-block">
+                                <span class="prompt-block-label">
+                                    <i class="fas fa-wand-magic-sparkles"></i> Gemini AI Response (Streamed Output)
+                                </span>
+                                <div class="output-container">
+                                    <div class="output-header">
+                                        <span>DYNAMIC VISITOR INSTRUCTIONS</span>
+                                        <span class="output-badge">Vertex AI API</span>
+                                    </div>
+                                    <div class="output-content" id="playground-output">
+                                        Click "Run Model Prompt" to execute the Gemini query.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Actions -->
+                        <div class="playground-footer">
+                            <span class="playground-token-info">
+                                Input Tokens: <span id="input-tokens">402</span> | Output Tokens: <span id="output-tokens">0</span>
+                            </span>
+                            <div class="action-bar">
+                                <button class="btn btn-secondary" id="btn-reset-playground">
+                                    <i class="fas fa-rotate-left"></i> Reset Presets
+                                </button>
+                                <button class="btn-run btn" id="btn-run-playground">
+                                    <span class="spinner"></span>
+                                    <i class="fas fa-play" id="btn-run-icon"></i>
+                                    <span>Run Model Prompt</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Interactive Live Queue Simulator -->
+        <section class="section" id="live-simulator">
+            <span class="section-kicker">Interactive Walkthrough</span>
+            <h2 class="section-title">Live Dual-View Queue Simulator</h2>
+            <p class="section-lead">
+                Witness how SkipQ acts as a complete, live B2B SaaS platform. The simulator syncs a <strong>Customer's Mobile Ticket</strong> (left) with the <strong>Operator Desk Dashboard</strong> (right). Add new customers, call tokens, or bench no-shows, and see wait-times and Gemini advice recalculate instantly!
+            </p>
+
+            <div class="simulator-layout">
+                <!-- Left View: Customer Mobile Viewport -->
+                <article class="mobile-wrapper" aria-label="Customer mobile ticket view">
+                    <div class="mobile-screen">
+                        <header class="mobile-header">
+                            <strong><i class="fas fa-hospital text-primary"></i> AIIMS Delhi OPD</strong>
+                            <span class="ticket-status-dot active" id="mobile-ticket-badge"><i class="fas fa-circle-nodes"></i> Waiting</span>
+                        </header>
+                        
+                        <div class="mobile-content">
+                            <!-- Simulated Ticket Card -->
+                            <div class="mobile-ticket">
+                                <div class="ticket-header">
+                                    <span>Outpatient Consultation</span>
+                                    <h4>Dr. A. Sharma (General Medicine)</h4>
+                                </div>
+                                <div class="ticket-body">
+                                    <div class="ticket-qr" title="Scan to join queue simulation">
+                                        <svg viewBox="0 0 100 100">
+                                            <!-- Simple visual mockup of a QR code -->
+                                            <rect x="0" y="0" width="28" height="28" fill="#1e293b"/>
+                                            <rect x="4" y="4" width="20" height="20" fill="#ffffff"/>
+                                            <rect x="8" y="8" width="12" height="12" fill="#1e293b"/>
+                                            
+                                            <rect x="72" y="0" width="28" height="28" fill="#1e293b"/>
+                                            <rect x="76" y="4" width="20" height="20" fill="#ffffff"/>
+                                            <rect x="80" y="8" width="12" height="12" fill="#1e293b"/>
+                                            
+                                            <rect x="0" y="72" width="28" height="28" fill="#1e293b"/>
+                                            <rect x="4" y="76" width="20" height="20" fill="#ffffff"/>
+                                            <rect x="8" y="80" width="12" height="12" fill="#1e293b"/>
+                                            
+                                            <rect x="36" y="10" width="8" height="18" fill="#1e293b"/>
+                                            <rect x="50" y="4" width="12" height="8" fill="#1e293b"/>
+                                            <rect x="36" y="36" width="18" height="8" fill="#1e293b"/>
+                                            <rect x="72" y="36" width="20" height="10" fill="#1e293b"/>
+                                            <rect x="10" y="36" width="16" height="20" fill="#1e293b"/>
+                                            <rect x="36" y="72" width="12" height="18" fill="#1e293b"/>
+                                            <rect x="58" y="72" width="8" height="8" fill="#1e293b"/>
+                                            <rect x="76" y="58" width="20" height="28" fill="#1e293b"/>
+                                            <rect x="80" y="62" width="12" height="12" fill="#ffffff"/>
+                                        </svg>
+                                    </div>
+                                    
+                                    <span>YOUR TOKEN NUMBER</span>
+                                    <strong class="ticket-number" id="mobile-ticket-number">H-104</strong>
+                                    
+                                    <div class="ticket-metrics">
+                                        <div class="metric-box">
+                                            <span>Ahead of You</span>
+                                            <strong id="mobile-people-ahead">3 people</strong>
+                                        </div>
+                                        <div class="metric-box">
+                                            <span>Est. Wait</span>
+                                            <strong id="mobile-est-wait">24 mins</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Real-time Gemini Guidance inside ticket -->
+                            <div class="ticket-ai-guidance">
+                                <i class="fas fa-sparkles"></i>
+                                <div class="guidance-text">
+                                    <h5>Gemini Smart Advice</h5>
+                                    <p id="mobile-ai-advice">
+                                        You are 4th in line for Dr. Sharma. Your estimated waiting time is 24 minutes. Since you require priority seating assistance, feel free to wait inside the Priority Lounge (Area B).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Right View: Operator Branch Dashboard -->
+                <article class="console-wrapper" aria-label="Operator desk view and controls">
+                    <!-- Stat counters -->
+                    <div class="console-header-stats">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <span>Total in Queue</span>
+                                <strong id="operator-stat-total">5</strong>
+                            </div>
+                            <div class="stat-icon-wrapper"><i class="fas fa-users"></i></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <span>Avg Wait Time</span>
+                                <strong>8.5 mins</strong>
+                            </div>
+                            <div class="stat-icon-wrapper"><i class="fas fa-stopwatch"></i></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <span>Completed Today</span>
+                                <strong id="operator-stat-completed">102</strong>
+                            </div>
+                            <div class="stat-icon-wrapper"><i class="fas fa-circle-check"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Operator Desk Controller -->
+                    <div class="desk-card">
+                        <div class="desk-header">
+                            <h4>OPD Counter Desk 4 - Consultation Triage</h4>
+                            <span class="desk-status">Operator Active</span>
+                        </div>
+                        <div class="desk-body">
+                            <div class="desk-current-serving">
+                                <span>Now Serving</span>
+                                <strong class="active-serving-num" id="operator-serving-token">H-101</strong>
+                                <p id="operator-serving-name">Harish Rohith S</p>
+                            </div>
+                            <div class="desk-controls">
+                                <p><strong>Counter Queue Administration Panel:</strong> Call the next visitor, bench no-shows, or mark the current customer's checkup complete.</p>
+                                <div class="desk-controls-row">
+                                    <button class="btn btn-primary" id="btn-call-next" style="background: var(--google-green); box-shadow: 0 4px 12px rgba(30,142,62,0.2);">
+                                        <i class="fas fa-bullhorn"></i> Call Next (Advance)
+                                    </button>
+                                    <button class="btn btn-secondary" id="btn-mark-noshow">
+                                        <i class="fas fa-user-clock"></i> Mark No-Show (Bench)
+                                    </button>
+                                    <button class="btn btn-secondary" id="btn-complete-service">
+                                        <i class="fas fa-check-double"></i> Complete Service
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Queue Table and Quick Join -->
+                    <div class="queue-table-card">
+                        <div class="queue-table-header">
+                            <h4>Active Queue Checkouts</h4>
+                            <span class="playground-token-info">WebSocket Live Feed</span>
+                        </div>
+                        <div class="queue-table-wrapper">
+                            <table class="queue-table">
+                               <thead>
+                                   <tr>
+                                       <th>Token</th>
+                                       <th>Name</th>
+                                       <th>Language</th>
+                                       <th>Priority / Note</th>
+                                       <th>Status</th>
+                                   </tr>
+                               </thead>
+                               <tbody id="queue-table-body">
+                                   <!-- Dynamic Rows inserted via JS -->
+                               </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Add Token Input -->
+                    <div class="join-form-wrapper">
+                        <span><strong>Add Simulated Visitor:</strong></span>
+                        <input type="text" id="add-visitor-name" placeholder="Enter Visitor Name (e.g. Priya Sharma)">
+                        <select class="preset-select" id="add-visitor-lang" style="width: auto;" aria-label="Select visitor language">
+                            <option value="English">English</option>
+                            <option value="Hindi">Hindi (हिन्दी)</option>
+                            <option value="Tamil">Tamil (தமிழ்)</option>
+                        </select>
+                        <select class="preset-select" id="add-visitor-priority" style="width: auto;" aria-label="Select visitor priority tag">
+                            <option value="Standard">Standard Visitor</option>
+                            <option value="Senior Citizen">Senior Citizen (Seating assistance)</option>
+                            <option value="Urgent Case">Urgent Scholarship / Medical Case</option>
+                        </select>
+                        <button class="btn btn-primary" id="btn-join-queue">
+                            <i class="fas fa-user-plus"></i> Join Queue
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 5: Technical Build & Architecture -->
+        <section class="section" id="architecture">
+            <span class="section-kicker">Technical Build</span>
+            <h2 class="section-title">High-Performance SaaS Architecture</h2>
+            <p class="section-lead">
+                SkipQ leverages a highly optimized monorepo structure. Our core queue engine handles complex ticket scheduling in memory, backed by robust transaction storage and Google Cloud serverless scalability.
+            </p>
+
+            <div class="blueprint-grid">
+                <!-- Frontend node -->
+                <div class="blueprint-node">
+                    <div class="node-header">
+                        <span class="node-badge">Web</span>
+                        <h4>Next.js Client</h4>
+                    </div>
+                    <div class="node-details">
+                        <p>A fast customer join screen, real-time ticket statuses, and an advanced operator console. Implemented with sleek design tokens.</p>
+                        <div class="node-tech">
+                            <span class="tech-tag">React 19</span>
+                            <span class="tech-tag">Next.js 16</span>
+                            <span class="tech-tag">Eden Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API backend node -->
+                <div class="blueprint-node">
+                    <div class="node-header">
+                        <span class="node-badge">API</span>
+                        <h4>Elysia Backend</h4>
+                    </div>
+                    <div class="node-details">
+                        <p>High-concurrency JSON/REST endpoints and real-time state broadcasts using lightweight WebSockets in Bun.</p>
+                        <div class="node-tech">
+                            <span class="tech-tag">Bun 1.2</span>
+                            <span class="tech-tag">Elysia API</span>
+                            <span class="tech-tag">WebSockets</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scheduling engine node -->
+                <div class="blueprint-node">
+                    <div class="node-header">
+                        <span class="node-badge">Jobs</span>
+                        <h4>Redis & BullMQ</h4>
+                    </div>
+                    <div class="node-details">
+                        <p>Maintains strict FIFO sequencing, manages active token buffer rates, and routes timed no-show tickets to active cooldown loops.</p>
+                        <div class="node-tech">
+                            <span class="tech-tag">Redis 5.4</span>
+                            <span class="tech-tag">BullMQ</span>
+                            <span class="tech-tag">Queue Buffers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Intelligence node -->
+                <div class="blueprint-node">
+                    <div class="node-header">
+                        <span class="node-badge">AI Core</span>
+                        <h4>Google AI Studio</h4>
+                    </div>
+                    <div class="node-details">
+                        <p>Executes structural prompts via Gemini Pro. Dynamically translates statuses, coordinates requirements, and generates daily branch insight summaries.</p>
+                        <div class="node-tech">
+                            <span class="tech-tag">Gemini API</span>
+                            <span class="tech-tag">Vertex AI</span>
+                            <span class="tech-tag">Triage Prompts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Indian SaaS & Offline Inclusion -->
+        <section class="section">
+            <span class="section-kicker">Market & Scalability</span>
+            <div class="impact-showcase-grid">
+                <div>
+                    <h2 class="section-title">Targeting the Heart of Digital Inclusion</h2>
+                    <p class="section-lead">
+                        India is a mobile-first country, yet high-speed data connectivity can be inconsistent, especially inside thick-walled public concrete buildings. Furthermore, digital literacy varies extensively.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
+                        SkipQ bridges this digital divide. By utilizing **Gemini’s ultra-compact semantic processing**, we translate heavy status metrics into standard offline notifications:
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
+                        When a citizen scans a QR code at an SBI Counter or government hospital, they can opt to close the browser entirely. SkipQ's **WhatsApp Integration Layer** routes dynamic text cards, keeping the user updated on queue status, wait times, and instructions via SMS and WhatsApp. 
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#live-simulator" class="btn btn-secondary">
+                            <i class="fas fa-users-viewfinder"></i> Test Interactive Simulator
+                        </a>
+                    </div>
+
+                    <!-- Interactive WhatsApp Push Alert Mockup -->
+                    <div class="whatsapp-phone-mockup">
+                        <div class="wa-header">
+                            <div class="wa-avatar">SQ</div>
+                            <div class="wa-title-container">
+                                <span class="wa-name">SkipQ Waitlist Agent</span>
+                                <span class="wa-status">Online - WhatsApp Cloud API</span>
+                            </div>
+                            <i class="fas fa-ellipsis-vertical" aria-hidden="true"></i>
+                        </div>
+                        <div class="wa-body">
+                            <div class="wa-bubble">
+                                <h5><i class="fas fa-sparkles"></i> Gemini Triage Alert</h5>
+                                <p id="wa-text-content">नमस्कार Priya Sharma! You are 2nd in line for Dr. Sharma at Counter 4. Estimated wait is 12 minutes. Bring your Outpatient (OP) Card and Aadhaar Card. Reply [1] if present, [2] to postpone 5 mins, or [3] to cancel ticket.</p>
+                                <span class="wa-time">10:42 PM</span>
+                            </div>
+                            <div class="wa-options-row">
+                                <button class="wa-chip" id="wa-opt-here" aria-label="WhatsApp Reply: I'm Here">I'm Here</button>
+                                <button class="wa-chip" id="wa-opt-delay" aria-label="WhatsApp Reply: Postpone 5 minutes">Postpone 5m</button>
+                                <button class="wa-chip" id="wa-opt-cancel" aria-label="WhatsApp Reply: Cancel Ticket">Cancel Ticket</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-illustrations">
+                    <div class="ill-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <h4>WhatsApp Push updates</h4>
+                        <p>No high-speed mobile data needed at the venue. Receive clean text updates and alert cards directly via WhatsApp.</p>
+                    </div>
+                    <div class="ill-card">
+                        <i class="fas fa-language"></i>
+                        <h4>Multilingual Localization</h4>
+                        <p>Gemini auto-detects dialect needs and formats clear queue advice in Hindi, Tamil, Telugu, and more.</p>
+                    </div>
+                    <div class="ill-card">
+                        <i class="fas fa-shield-halved"></i>
+                        <h4>Secure Aadhaar Triage</h4>
+                        <p>Fast, secure ID-sweep options check visitor requirements against specific desk needs before they join the queue.</p>
+                    </div>
+                    <div class="ill-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Vertex Predictive Scale</h4>
+                        <p>Predicts seasonal rush spikes (e.g. monsoon OPD waves, registrar certificate runs) to optimize branch desks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: SaaS Economic Opportunity & ROI Calculator -->
+        <section class="section" id="roi-calculator">
+            <span class="section-kicker">Business Intelligence</span>
+            <h2 class="section-title">SaaS Opportunity & Wait Time Savings Calculator</h2>
+            <p class="section-lead">
+                SkipQ delivers massive economic value. By automating queue coordination and shifting waiting to nearby businesses or offsite zones, SkipQ preserves national productivity. Drag the sliders below to calculate the potential yearly hours saved and opportunity value unlocked for your organization.
+            </p>
+
+            <div class="roi-calculator-card">
+                <div class="roi-inputs">
+                    <div class="control-group">
+                        <div class="slider-header">
+                            <label for="roi-visitors">Daily Branch Visitors</label>
+                            <span class="slider-val"><span id="roi-visitors-val">300</span> citizens/day</span>
+                        </div>
+                        <input type="range" id="roi-visitors" min="50" max="1000" step="25" value="300" aria-label="Daily visitors slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="slider-header">
+                            <label for="roi-wait">Wait Time Saved per Citizen</label>
+                            <span class="slider-val"><span id="roi-wait-val">20</span> minutes</span>
+                        </div>
+                        <input type="range" id="roi-wait" min="5" max="90" step="5" value="20" aria-label="Wait time saved slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="slider-header">
+                            <label for="roi-wage">Average Hourly Productivity Rate</label>
+                            <span class="slider-val">₹<span id="roi-wage-val">120</span>/hour</span>
+                        </div>
+                        <input type="range" id="roi-wage" min="40" max="400" step="10" value="120" aria-label="Average hourly rate slider">
+                    </div>
+                </div>
+
+                <div class="roi-outputs">
+                    <i class="fas fa-coins" style="font-size: 2.2rem; color: var(--google-green);" aria-hidden="true"></i>
+                    <strong>Estimated Value Unlocked</strong>
+                    <div class="roi-val-display" id="roi-result">₹3,60,000</div>
+                    <p>representing <span id="roi-hours-saved">3,600</span> productivity hours returned to citizens annually per branch.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Founder's Vision -->
+        <section class="section" style="background: var(--surface-tinted); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; margin-bottom: 60px;">
+            <span class="section-kicker">Product Vision</span>
+            <h2 class="section-title">Founder's Vision — Harish Rohith S</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px;">
+                I built SkipQ because waitlists shouldn't feel like a black box. In many busy Indian institutions, manual processes lead to crowding, shouting, and hours of wasted time for ordinary citizens. 
+            </p>
+            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 24px;">
+                By utilizing Google AI tools, we transform basic queuing metrics into warm, supportive, multilingual advice. SkipQ isn't just about managing numbers; it's about giving citizens their day back, making overcrowded counters calmer, and building digital infrastructure that leaves no one behind.
+            </p>
+            
+            <div class="hero-actions" style="margin-bottom: 0;">
+                <button class="btn btn-primary" id="btn-linkedin-share">
+                    <i class="fab fa-linkedin"></i> Share Project on LinkedIn
+                </button>
+                <button class="btn btn-secondary" data-copy-link>
+                    <i class="fas fa-link"></i> Copy Launch Link
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Interactive copy toast notification -->
+    <div class="toast" role="status" aria-live="polite" data-toast>
+        <i class="fas fa-check-circle"></i>
+        <span>Link copied to clipboard!</span>
+    </div>
+
+    <!-- Premium Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="brand-mark" style="width: 28px; height: 28px; font-size: 0.8rem; border-radius: 6px;">SQ</span>
+                <strong style="font-weight: 800; font-size: 1.1rem; color: var(--text);">SkipQ</strong>
+            </div>
+            <p>© 2026 SkipQ. Reimagining crowded public waiting rooms with Google Cloud AI.</p>
+            <button class="footer-btn-top" data-scroll-top>
+                Back to Top <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Web Application Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
