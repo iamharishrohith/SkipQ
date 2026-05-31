@@ -10,6 +10,20 @@ export async function rehydrateAllQueues() {
     console.log('  🔄 Rehydrating queue state from database...');
 
     try {
+        // Seed default test service if not exists (for dual-simulator live sync)
+        const existingService = db.findById('services', 'srv-test-1');
+        if (!existingService) {
+            db.insert('services', {
+                id: 'srv-test-1',
+                name: 'Test General OPD Clinic',
+                branchId: 'br-test',
+                isActive: true,
+                maxTokens: 100,
+                price: 0
+            });
+            console.log('  🌱 Seeded default srv-test-1 service');
+        }
+
         const tokens = db.find('tokens', {});
         const counters: Record<string, number> = {};
         let activeCount = 0;

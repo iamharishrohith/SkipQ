@@ -289,4 +289,74 @@ export const queueRoutes = new Elysia({ prefix: '/api/queue' })
             serviceId: t.String(),
             tokenId: t.String(),
         }),
+    })
+
+    // --- Get complete queue state details (with full token details for landing page simulator) ---
+    .get('/state-details/:serviceId', async ({ params }) => {
+        try {
+            const serviceId = params.serviceId;
+            const queueRedis = await import('../redis/queue.redis');
+            
+            // 1. Get active token
+            const activeTokenId = await queueRedis.getActiveToken(serviceId);
+            const activeToken = activeTokenId ? db.findOne('tokens', { id: activeTokenId }) : null;
+            
+            // 2. Get waiting tokens
+            const waitingIds = await queueRedis.getQueueMembers(serviceId);
+            const waitingTokens = waitingIds.map(id => db.findOne('tokens', { id })).filter(Boolean);
+            
+            // 3. Get benched tokens
+            const benchIds = await queueRedis.getBenchMembers(serviceId);
+            const benchTokens = benchIds.map(id => db.findOne('tokens', { id })).filter(Boolean);
+
+            // 4. Resolve users and map to QueueItem format
+            const mapTokenToItem = (token: any, status: 'serving' | 'waiting' | 'benched') => {
+                const user = db.findOne('user', { id: token.userId });
+                const priority = token.isFastPass ? 'VIP FastPass' : 'Standard';
+                return {
+                    id: token.id,
+                    token: `H-${token.tokenNumber}`,
+                    name: user?.name || 'Guest User',
+                    lang: 'English',
+                    priority,
+                    status
+                };
+            };
+
+            const items: any[] = [];
+            
+            if (activeToken) {
+                items.push(mapTokenToItem(activeToken, 'serving'));
+            }
+            
+            for (const t of waitingTokens) {
+                items.push(mapTokenToItem(t, 'waiting'));
+            }
+            
+            for (const t of benchTokens) {
+                items.push(mapTokenToItem(t, 'benched'));
+            }
+
+            // Get total completed count for this service
+            const completedTokens = db.find('tokens', { serviceId, status: 'completed' });
+            
+            // Current token counter
+            const currentCounter = await queueRedis.getCounter(serviceId);
+
+            return {
+                success: true,
+                data: {
+                    queue: items,
+                    completedCount: 102 + completedTokens.length,
+                    tokenCounter: Math.max(105, currentCounter)
+                }
+            };
+        } catch (err: any) {
+            return { success: false, error: err.message };
+        }
+    }, {
+        params: t.Object({
+            serviceId: t.String(),
+        }),
     });
+

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './page.module.css';
@@ -218,12 +218,117 @@ export default function HomePage() {
     const [completedCount, setCompletedCount] = useState(102);
     const [tokenCounter, setTokenCounter] = useState(105);
 
+    // Live Server Sync States
+    const [syncWithServer, setSyncWithServer] = useState(false);
+    const [wsConnected, setWsConnected] = useState(false);
+    const [myBookedToken, setMyBookedToken] = useState<string | null>(null);
+    const wsRef = useRef<WebSocket | null>(null);
+
     // Join queue inputs
     const [addName, setAddName] = useState('');
     const [addLang, setAddLang] = useState('English');
     const [addPriority, setAddPriority] = useState('Standard');
 
-    const handleCallNext = () => {
+    // Initial state fetch from Elysia API
+    const fetchServerState = async () => {
+        try {
+            const apiHost = window.location.hostname;
+            const res = await fetch(`http://${apiHost}:3001/api/queue/state-details/srv-test-1`);
+            const data = await res.json();
+            if (data.success && data.data) {
+                setQueue(data.data.queue);
+                setCompletedCount(data.data.completedCount);
+                setTokenCounter(data.data.tokenCounter);
+            }
+        } catch (err) {
+            console.error('Failed to fetch Elysia state:', err);
+            triggerToast('Server sync unavailable. Verify Elysia API server is active.');
+            setSyncWithServer(false);
+        }
+    };
+
+    useEffect(() => {
+        if (!syncWithServer) {
+            if (wsRef.current) {
+                wsRef.current.close();
+                wsRef.current = null;
+            }
+            setWsConnected(false);
+            setQueue(initialQueue);
+            setCompletedCount(102);
+            setTokenCounter(105);
+            setMyBookedToken(null);
+            return;
+        }
+
+        // Fetch initial state first
+        fetchServerState();
+
+        // Establish WS connection
+        const apiHost = window.location.hostname;
+        const wsUrl = `ws://${apiHost}:3001/ws/queue?serviceId=srv-test-1`;
+        console.log(`Connecting to WebSocket: ${wsUrl}`);
+        
+        const ws = new WebSocket(wsUrl);
+        wsRef.current = ws;
+
+        ws.onopen = () => {
+            console.log('WS Connected successfully!');
+            setWsConnected(true);
+            triggerToast('Live Queue sync active via WebSocket!');
+        };
+
+        ws.onmessage = (event) => {
+            console.log('Received WS Event:', event.data);
+            try {
+                const parsed = JSON.parse(event.data);
+                if (parsed.type) {
+                    fetchServerState();
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        ws.onerror = (err) => {
+            console.error('WS Error:', err);
+            setWsConnected(false);
+        };
+
+        ws.onclose = () => {
+            console.log('WS Closed');
+            setWsConnected(false);
+        };
+
+        return () => {
+            if (wsRef.current) {
+                wsRef.current.close();
+                wsRef.current = null;
+            }
+        };
+    }, [syncWithServer]);
+
+    const handleCallNext = async () => {
+        if (syncWithServer) {
+            try {
+                const apiHost = window.location.hostname;
+                const res = await fetch(`http://${apiHost}:3001/api/queue/next`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ serviceId: 'srv-test-1', operatorName: 'OPD Counter Desk 4' })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    triggerToast(data.data.promoted ? 'Queue advanced! Next visitor called.' : 'Queue advanced! No one waiting.');
+                } else {
+                    triggerToast(data.error || 'Server call next failed.');
+                }
+            } catch (err) {
+                triggerToast('Network error on call next.');
+            }
+            return;
+        }
+
         const servingIdx = queue.findIndex(item => item.status === 'serving');
         let newQueue = [...queue];
         if (servingIdx !== -1) {
@@ -240,7 +345,38 @@ export default function HomePage() {
         triggerToast('Queue advanced! Next visitor called.');
     };
 
-    const handleMarkNoShow = () => {
+    const handleMarkNoShow = async () => {
+        const servingItem = queue.find(item => item.status === 'serving');
+        if (!servingItem) {
+            triggerToast('No active visitor to bench.');
+            return;
+        }
+
+        if (syncWithServer) {
+            try {
+                const apiHost = window.location.hostname;
+                const tokenId = (servingItem as any).id;
+                if (!tokenId) {
+                    triggerToast('Simulated token ID missing.');
+                    return;
+                }
+                const res = await fetch(`http://${apiHost}:3001/api/queue/no-show`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tokenId })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    triggerToast(`Token ${servingItem.token} benched due to absence.`);
+                } else {
+                    triggerToast(data.error || 'Server bench failed.');
+                }
+            } catch (err) {
+                triggerToast('Network error on bench.');
+            }
+            return;
+        }
+
         const servingIdx = queue.findIndex(item => item.status === 'serving');
         if (servingIdx !== -1) {
             let newQueue = [...queue];
@@ -255,12 +391,36 @@ export default function HomePage() {
 
             setQueue(newQueue);
             triggerToast(`Token ${item.token} benched due to absence.`);
-        } else {
-            triggerToast('No active visitor to bench.');
         }
     };
 
-    const handleCompleteService = () => {
+    const handleCompleteService = async () => {
+        const servingItem = queue.find(item => item.status === 'serving');
+        if (!servingItem) {
+            triggerToast('No active consultation to complete.');
+            return;
+        }
+
+        if (syncWithServer) {
+            try {
+                const apiHost = window.location.hostname;
+                const res = await fetch(`http://${apiHost}:3001/api/queue/complete`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ serviceId: 'srv-test-1' })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    triggerToast(`Token ${servingItem.token} consultation complete.`);
+                } else {
+                    triggerToast(data.error || 'Server complete failed.');
+                }
+            } catch (err) {
+                triggerToast('Network error on complete.');
+            }
+            return;
+        }
+
         const servingIdx = queue.findIndex(item => item.status === 'serving');
         if (servingIdx !== -1) {
             const item = queue[servingIdx];
@@ -275,14 +435,46 @@ export default function HomePage() {
 
             setQueue(newQueue);
             triggerToast(`Token ${item.token} consultation complete.`);
-        } else {
-            triggerToast('No active consultation to complete.');
         }
     };
 
-    const handleAddSimulatedVisitor = () => {
+    const handleAddSimulatedVisitor = async () => {
         if (!addName.trim()) {
             triggerToast('Please enter a name first.');
+            return;
+        }
+
+        if (syncWithServer) {
+            try {
+                const apiHost = window.location.hostname;
+                const phone = '98765' + Math.floor(10000 + Math.random() * 90000);
+                const isFastPass = addPriority === 'VIP FastPass';
+                
+                const res = await fetch(`http://${apiHost}:3001/api/queue/book`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        serviceId: 'srv-test-1',
+                        name: addName.trim(),
+                        phone,
+                        queueType: 'main',
+                        paymentStatus: isFastPass ? 'paid' : 'free',
+                        amountPaid: isFastPass ? 99 : 0,
+                        transactionId: isFastPass ? 'TXN-' + Date.now() : undefined
+                    })
+                });
+                
+                const data = await res.json();
+                if (data.success) {
+                    triggerToast(`Token H-${data.data.tokenNumber} registered! Joined waiting list.`);
+                    setMyBookedToken(`H-${data.data.tokenNumber}`);
+                    setAddName('');
+                } else {
+                    triggerToast(data.error || 'Failed to book token.');
+                }
+            } catch (err) {
+                triggerToast('Network error on registration.');
+            }
             return;
         }
 
@@ -302,8 +494,9 @@ export default function HomePage() {
         triggerToast(`Token ${newToken.token} registered! Joined waiting list.`);
     };
 
-    // Calculate mobile ticket details (H-104)
-    const myTicketIndex = queue.findIndex(item => item.token === 'H-104');
+    // Calculate mobile ticket details
+    const targetTokenNum = syncWithServer ? (myBookedToken || (queue.find(item => item.status === 'waiting')?.token || 'H-104')) : 'H-104';
+    const myTicketIndex = queue.findIndex(item => item.token === targetTokenNum);
     let ticketStatusText = 'Waiting';
     let ticketPeopleAhead = '3 people';
     let ticketEstWait = '24 mins';
@@ -839,6 +1032,55 @@ export default function HomePage() {
                     <p className={styles['section-desc']}>
                         Witness how SkipQ acts as a complete, live B2B SaaS platform. The simulator syncs a <strong>Customer's Mobile Ticket</strong> (left) with the <strong>Operator Desk Dashboard</strong> (right). Add new customers, call tokens, or bench no-shows, and see wait-times and Gemini advice recalculate instantly!
                     </p>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '-2.5rem', marginBottom: '4rem', flexWrap: 'wrap' }}>
+                    <div style={{
+                        display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 20px', 
+                        borderRadius: '24px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)',
+                        boxShadow: 'var(--shadow-sm)', transition: 'all 200ms ease'
+                    }}>
+                        <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--text-secondary)' }}>Server Synchronization:</span>
+                        <div style={{ display: 'flex', background: '#f1f5f9', padding: '3px', borderRadius: '18px', gap: '4px' }}>
+                            <button 
+                                onClick={() => setSyncWithServer(false)}
+                                style={{
+                                    border: 'none', padding: '6px 16px', borderRadius: '14px', fontSize: '0.78rem', fontWeight: 800, cursor: 'pointer',
+                                    background: !syncWithServer ? '#ffffff' : 'transparent',
+                                    color: !syncWithServer ? '#475569' : '#94a3b8',
+                                    boxShadow: !syncWithServer ? '0 2px 4px rgba(0,0,0,0.06)' : 'none',
+                                    transition: 'all 150ms ease'
+                                }}
+                            >
+                                🔴 Offline Simulation
+                            </button>
+                            <button 
+                                onClick={() => setSyncWithServer(true)}
+                                style={{
+                                    border: 'none', padding: '6px 16px', borderRadius: '14px', fontSize: '0.78rem', fontWeight: 800, cursor: 'pointer',
+                                    background: syncWithServer ? 'var(--color-primary)' : 'transparent',
+                                    color: syncWithServer ? '#ffffff' : '#94a3b8',
+                                    boxShadow: syncWithServer ? '0 2px 6px rgba(139, 92, 246, 0.3)' : 'none',
+                                    transition: 'all 150ms ease'
+                                }}
+                            >
+                                🟢 WebSocket Sync (Live)
+                            </button>
+                        </div>
+                        
+                        {syncWithServer && (
+                            <span style={{ 
+                                display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.72rem', fontWeight: 800,
+                                padding: '4px 10px', borderRadius: '12px',
+                                background: wsConnected ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                color: wsConnected ? 'var(--color-success)' : 'var(--color-danger)',
+                                transition: 'all 200ms ease'
+                            }}>
+                                <i className={`fa-solid ${wsConnected ? 'fa-circle' : 'fa-triangle-exclamation'}`} style={{ fontSize: '0.5rem' }} />
+                                {wsConnected ? 'Connected (srv-test-1)' : 'Connecting...'}
+                            </span>
+                        )}
+                    </div>
                 </div>
 
                 <div className={styles['simulator-layout']}>
