@@ -1,6 +1,6 @@
-# SkipQ (v2) — Multi-Cloud Technical Deployment Guide
+# SkipQ Prime — Multi-Cloud Technical Deployment Guide
 
-This guide details the technical steps to deploy the SkipQ v2 monorepo to production using:
+This guide details the technical steps to deploy the SkipQ Prime monorepo to production using:
 1. **Google Cloud Run**: To host the high-performance, serverless Elysia API backend container running on Bun.
 2. **Firebase Hosting**: To host the Next.js static production frontend client.
 
@@ -67,7 +67,7 @@ Firebase Hosting is highly optimized for fast static frontend pages. Since we ar
    ```
 3. Launch to Firebase Hosting:
    ```bash
-   firebase deploy --only hosting --project skipq-ai
+   firebase deploy --only hosting --project skipq-ai --config firebase-app.json
    ```
 
 ---

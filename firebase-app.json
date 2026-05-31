@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "skipq-prime-portal",
     "public": "apps/web/out",
     "ignore": [
       "firebase-app.json",
