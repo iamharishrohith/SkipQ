@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-    title: 'SkipQ — Smart Queue Management',
+    title: 'SkipQ Prime — Smart Queue Management',
     description: 'Eliminate waiting lines with real-time digital queue management. Book tokens, track your position, and get notified when it\'s your turn.',
     keywords: ['queue management', 'digital queue', 'token system', 'skip the line', 'waitlist'],
 };

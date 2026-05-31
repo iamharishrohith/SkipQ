@@ -1,8 +1,8 @@
-# 🎫 SkipQ (v2) — Enterprise AI-Assisted Queue Triage & UPI Billing Ecosystem
+# 🎫 SkipQ Prime — Enterprise AI-Assisted Queue Triage & UPI Billing Ecosystem
 
-SkipQ is an ultra-high-fidelity, multi-tenant B2B SaaS queue waitlist companion designed to eliminate physical waiting lines in high-friction service centers across India and the APAC region.
+SkipQ Prime is an ultra-high-fidelity, multi-tenant B2B SaaS queue waitlist companion designed to eliminate physical waiting lines in high-friction service centers across India and the APAC region.
 
-Built by **Harish Rohith S** for the **Google Gen AI Academy APAC Builder Campaign**, SkipQ replaces stressful, paper-based queuing environments in government outpatient departments (OPDs), public banking branches (SBI), college registrar offices (IIT), and vehicle PUC testing lanes with a modern, digital-first solution.
+Built by **Harish Rohith S** for the **Google Gen AI Academy APAC Builder Campaign**, SkipQ Prime replaces stressful, paper-based queuing environments in government outpatient departments (OPDs), public banking branches (SBI), college registrar offices (IIT), and vehicle PUC testing lanes with a modern, digital-first solution.
 
 ---
 

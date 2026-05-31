@@ -678,7 +678,7 @@ export default function HomePage() {
                     </h1>
 
                     <p className={styles['hero-subtitle']}>
-                        Transform high-friction waiting queues into highly-efficient revenue streams. SkipQ combines dynamic 100% deterministic SLA balancing, in-venue bento merchant offers, and premium UPI line-skipping models.
+                        Transform high-friction waiting queues into highly-efficient revenue streams. SkipQ Prime combines dynamic 100% deterministic SLA balancing, in-venue bento merchant offers, and premium UPI line-skipping models.
                     </p>
 
                     <div className={styles['hero-actions']}>
@@ -1895,9 +1895,9 @@ export default function HomePage() {
                 <div className={styles['footer-inner']}>
                     <div className={styles['footer-brand']}>
                         <span className="brand-mark" style={{ width: '28px', height: '28px', fontSize: '0.8rem', borderRadius: '6px' }}>SQ</span>
-                        <strong style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--text-primary)' }}>SkipQ</strong>
+                        <strong style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--text-primary)' }}>SkipQ Prime</strong>
                     </div>
-                    <p>© 2026 SkipQ. Reimagining crowded public waiting rooms with Google Cloud AI.</p>
+                    <p>© 2026 SkipQ Prime. Reimagining crowded public waiting rooms with Google Cloud AI.</p>
                     <button className={styles['footer-btn-top']} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                         Back to Top <i className="fas fa-arrow-up"></i>
                     </button>
